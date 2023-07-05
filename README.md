@@ -9,7 +9,6 @@ Syntaxe du fichier
 
 ``` [defaults] ```
 
-
 ``` inventory=/path/to/hosts ``` 
 
 
@@ -22,8 +21,11 @@ Syntaxe du fichier
 Syntaxe d'un fichier hosts
 
 ``` [groupname]	``` 
+
 ``` servername	```
+
 ``` servername2	```
+
 ``` ipserver	```
 
 ### Différents groupes par défaut
@@ -36,10 +38,15 @@ Syntaxe d'un fichier hosts
 Syntaxe : 
 
 ``` [web]		```
+
 ``` web1.local		```
+
 ``` web2.local		```
+
 ```			```
+
 ``` [linux:children]	```
+
 ``` web			```
 
 ### Variables d'hôtes

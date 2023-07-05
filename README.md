@@ -8,20 +8,30 @@ Créer un fichier ansible.cfg dans /home/USERNAME/.local/ (si l'installation de 
 Syntaxe du fichier
 
 ``` [defaults] ```
-```inventory=/path/to/hosts``` 
+
+
+``` inventory=/path/to/hosts ``` 
+
 
 ## Fichier inventaire 
 
 ### permet d'avoir toutes les machines sous formes de groupes  
 
-```nano hosts```
+``` nano hosts ```
 
 Syntaxe d'un fichier hosts
 
-```[groupname]	``` 
-```servername	```
-```servername2	```
-```ipserver	```
+``` [groupname]	``` 
+
+
+``` servername	```
+
+
+``` servername2	```
+
+
+``` ipserver	```
+
 
 ### Différents groupes par défaut
 
@@ -32,12 +42,22 @@ Syntaxe d'un fichier hosts
 
 Syntaxe : 
 
-```[web]		```
-```web1.local		```
-```web2.local		```
+``` [web]		```
+
+
+``` web1.local		```
+
+
+``` web2.local		```
+
+
 ```			```
-```[linux:children]	```
-```web			```
+
+
+``` [linux:children]	```
+
+
+``` web			```
 
 ### Variables d'hôtes
 
@@ -47,8 +67,10 @@ les variables peuvent être associées aux cibles :
 
 ex : 
 
-	```[web]```
-	```web1		ansible_connection=ssh	ansible_user=web1``` 
+	``` [web] ```
+	
+	
+	``` web1		ansible_connection=ssh	ansible_user=web1 ``` 
 
 ## Syntaxe d'une commande ansible 
 
@@ -58,11 +80,11 @@ Les commandes ad-hoc permettent de faire des changements ponctuels ou des tests 
 
 Crée un fichier sur le localhost
 
-```ansible localhost -m command -a "touch /home/bastien/ansible" ```
+``` ansible localhost -m command -a "touch /home/bastien/ansible" ```
 
 ### Executer une commande ansible avec des droits sudo
 
-```ansible localhost --become -m command -a "touch /home/bastien/ansible" ``` 
+``` ansible localhost --become -m command -a "touch /home/bastien/ansible" ``` 
 
 ### Syntaxe du playbook
 

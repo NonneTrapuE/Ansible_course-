@@ -7,22 +7,22 @@
 Créer un fichier ansible.cfg dans /home/USERNAME/.local/ (si l'installation de Ansible est uniquement pour l'utilisateur)
 Syntaxe du fichier
 
-``` [defaults] ```
-``` inventory=/path/to/hosts ``` 
+    ``` [defaults] ```
+    ``` inventory=/path/to/hosts ``` 
 
 
 ## Fichier inventaire 
 
 ### permet d'avoir toutes les machines sous formes de groupes  
 
-``` nano hosts ```
+    ``` nano hosts ```
 
 Syntaxe d'un fichier hosts
 
-``` [groupname]	``` 
-``` servername	```
-``` servername2	```
-``` ipserver	```
+    ``` [groupname]	``` 
+    ``` servername	```
+    ``` servername2	```
+    ``` ipserver	```
 
 ### Différents groupes par défaut
 
@@ -33,12 +33,12 @@ Syntaxe d'un fichier hosts
 
 Syntaxe : 
 
-``` [web]		```
-``` web1.local		```
-``` web2.local		```
-```			```
-``` [linux:children]	```
-``` web			```
+    ``` [web]		```
+    ``` web1.local		```
+    ``` web2.local		```
+    ```			```
+    ``` [linux:children]	```
+    ``` web			```
 
 ### Variables d'hôtes
 

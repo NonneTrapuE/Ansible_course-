@@ -22,16 +22,9 @@ Syntaxe du fichier
 Syntaxe d'un fichier hosts
 
 ``` [groupname]	``` 
-
-
 ``` servername	```
-
-
 ``` servername2	```
-
-
 ``` ipserver	```
-
 
 ### Différents groupes par défaut
 
@@ -43,20 +36,10 @@ Syntaxe d'un fichier hosts
 Syntaxe : 
 
 ``` [web]		```
-
-
 ``` web1.local		```
-
-
 ``` web2.local		```
-
-
 ```			```
-
-
 ``` [linux:children]	```
-
-
 ``` web			```
 
 ### Variables d'hôtes
@@ -68,8 +51,6 @@ les variables peuvent être associées aux cibles :
 ex : 
 
 	``` [web] ```
-	
-	
 	``` web1		ansible_connection=ssh	ansible_user=web1 ``` 
 
 ## Syntaxe d'une commande ansible 

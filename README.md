@@ -51,6 +51,16 @@ ex :
 	[web]
 	web1		ansible_connection=ssh	ansible_user=web1 
 
+ ### Variables de groupes
+
+ Ces variables sont définies au niveau du groupe
+
+ex:
+
+	[all:vars]
+	ansible_connection=ssh
+ 
+
 ## Syntaxe d'une commande ansible 
 
 ### Commandes ad-hoc 
@@ -65,8 +75,48 @@ Crée un fichier sur le localhost
 
 ```ansible localhost --become -m command -a "touch /home/bastien/ansible" ``` 
 
-### Syntaxe du playbook
+### Exemple de syntaxe d'un playbook
 
 [voir fichier yaml]
 
+### Variables dans le playbook
+
+Syntaxe pour l'utilisation de variables dans un playbook
+
+ex:
+
+	---
+ 	  - hosts: web
+        tasks:
+	    - name : Create a web file
+          file:
+	         dest: '{{web_file}}'
+	  	 state: '{{file_state}}'
+
  
+## Inventaire dynamiques
+
+Les inventaires dynamiques sont particulièrement utiles lors de développement de VM localement ou d'utilisation d'instances cloud. Elles premettent d'aller chercher les informations des machines voulues.
+Cependant, certains plug-ins d'inventaire et pré-requis sont obligatoires pour leur utilisation. (aws_ec2 ou virtualbox par exemple)
+
+ex:
+
+Pour virtualbox, un fichier ansible.cfg devra contenir les lignes suivantes :
+	
+ 	[inventory]
+	enable_plugins = host_list, virtualbox, constructed, script, auto, yaml, ini, toml
+	[defaults]
+ 	inventory=/path/to/vbox.yml
+
+Le fichier d'inventaire, lui, devra s'appeler obligatoirement vbox.yml.
+Il contiendra par exemple les lignes suivantes :
+
+	plugin: virtualbox
+	running_only: yes	#Récupère les vms en ligne uniquement
+ 	groups:
+  	    web: "'web' in (inventory_hostname)"
+ 	    ha: "'ha' in (inventory_hostname)"
+
+
+Plus de renseignements sur l'utilisation du plugin Virtualbox Inventory [ici](https://docs.ansible.com/ansible/latest/collections/community/general/virtualbox_inventory.html)
+  

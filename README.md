@@ -4,11 +4,12 @@
 
 ## Fichiers hosts d'Ansible
 
-Créer un fichier ansible.cfg dans /home/USERNAME/.local/ (si l'installation de Ansible est uniquement pour l'utilisateur)
-Syntaxe du fichier
+Créer un fichier ansible.cfg dans /home/USERNAME/.local/ (si l'installation de Ansible est uniquement pour l'utilisateur).
 
-``` [defaults] ```
-```inventory=/path/to/hosts``` 
+Syntaxe du fichier:
+
+	[defaults]
+	inventory=/path/to/hosts 
 
 ## Fichier inventaire 
 
@@ -18,10 +19,10 @@ Syntaxe du fichier
 
 Syntaxe d'un fichier hosts
 
-```[groupname]	``` 
-```servername	```
-```servername2	```
-```ipserver	```
+	[groupname] 
+	servername
+	servername2
+	ipserver
 
 ### Différents groupes par défaut
 
@@ -32,12 +33,12 @@ Syntaxe d'un fichier hosts
 
 Syntaxe : 
 
-```[web]		```
-```web1.local		```
-```web2.local		```
-```			```
-```[linux:children]	```
-```web			```
+	[web]
+	web1.local
+	web2.local
+			
+	[linux:children]
+	web
 
 ### Variables d'hôtes
 
@@ -47,8 +48,8 @@ les variables peuvent être associées aux cibles :
 
 ex : 
 
-	```[web]```
-	```web1		ansible_connection=ssh	ansible_user=web1``` 
+	[web]
+	web1		ansible_connection=ssh	ansible_user=web1 
 
 ## Syntaxe d'une commande ansible 
 
@@ -66,6 +67,6 @@ Crée un fichier sur le localhost
 
 ### Syntaxe du playbook
 
-[voir fichier yaml](/home/bastien/test.yml)
+[voir fichier yaml]
 
  

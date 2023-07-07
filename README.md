@@ -119,4 +119,5 @@ Il contiendra par exemple les lignes suivantes :
 
 
 Plus de renseignements sur l'utilisation du plugin Virtualbox Inventory [ici](https://docs.ansible.com/ansible/latest/collections/community/general/virtualbox_inventory.html)
-  
+
+ Plus de renseignements sur l'utilisation des plugins d'inventaire [ici](https://docs.ansible.com/ansible/latest/plugins/inventory.html#using-inventory-plugins) 

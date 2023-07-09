@@ -24,6 +24,8 @@ Syntaxe d'un fichier hosts
 	servername2
 	ipserver
 
+ Syntaxe d'un fichier hôte avec des variables
+
 ### Différents groupes par défaut
 
 - all
@@ -49,7 +51,7 @@ les variables peuvent être associées aux cibles :
 ex : 
 
 	[web]
-	web1		ansible_connection=ssh	ansible_user=web1 
+	web1		ansible_connection=ssh	ansible_user=web1 ansible_host=192.168.0.1
 
  ### Variables de groupes
 
@@ -120,4 +122,50 @@ Il contiendra par exemple les lignes suivantes :
 
 Plus de renseignements sur l'utilisation du plugin Virtualbox Inventory [ici](https://docs.ansible.com/ansible/latest/collections/community/general/virtualbox_inventory.html)
 
- Plus de renseignements sur l'utilisation des plugins d'inventaire [ici](https://docs.ansible.com/ansible/latest/plugins/inventory.html#using-inventory-plugins) 
+Plus de renseignements sur l'utilisation des plugins d'inventaire [ici](https://docs.ansible.com/ansible/latest/plugins/inventory.html#using-inventory-plugins) 
+
+
+## Playbook
+
+Quelques rappels :
+
+Pour lancer un playbook ansible, il faudra utiliser la commande :
+
+```ansible-playbook playbook_name.yml```
+
+Afin de tester la validité du fichier, nous utiliserons la commande :
+
+```ansible-playbook playbook_name.yml --syntax-check ```
+
+Et enfin, pour simuler l'installation, nous utiliserons la commande :
+
+```ansible-playbook playbook_name.yml --check```
+
+Exemple de playbook
+
+	---
+ 	- name: Installation d'un serveur web
+  	  hosts: web
+          vars: 
+	    apache_port: 80
+     	    tomcat_port: 8080
+	    apache_max_keepalive: 25
+          remote_user: ansible
+	  become: yes
+   	  tasks: 
+          - name: Installation du package apache
+	    yum: 
+	      name: httpd
+              state: latest
+	  - name: Démarrage du service apache
+   	    service:
+	      name: httpd
+	      state: started 
+          - name: Activation de SELinux
+   	    command: /sbin/setenforce 1
+	  - name: debug
+            debug: 
+	       msg: "Ceci n'apparait qu'avec l'option verbose"
+	       verbosity: 2
+	    tags:
+            - debug
